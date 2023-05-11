@@ -1,6 +1,7 @@
 package com.example.TaskDelete.controller;
 
 import com.example.TaskDelete.dto.ListDto;
+import com.example.TaskDelete.dto.ResponseDto;
 import com.example.TaskDelete.dto.TaskDto;
 import com.example.TaskDelete.repository.TaskRepository;
 import com.example.TaskDelete.entity.TaskEntity;
@@ -37,8 +38,8 @@ public class TaskController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/deletetask", consumes = "application/json", produces = "application/json")
-    public HashMap<String,String> DeleteTask(@RequestBody TaskDto t){
-        TaskEntity tasks=new TaskEntity(t.getId(),t.getName(),t.getDescription(),t.isTick(),t.getTickdata(),t.getStatus());
-       return ser.DeleteTask(tasks);
+    public ResponseDto DeleteTask(@RequestBody TaskDto t){
+//        TaskEntity tasks=new TaskEntity(t.getId(),t.getName(),t.getDescription(),t.isTick(),t.getTickdata(),t.getStatus());
+       return ser.DeleteTask(t);
     }
 }

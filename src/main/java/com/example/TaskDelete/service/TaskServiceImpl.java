@@ -1,5 +1,7 @@
 package com.example.TaskDelete.service;
 
+import com.example.TaskDelete.dto.ResponseDto;
+import com.example.TaskDelete.dto.TaskDto;
 import com.example.TaskDelete.entity.TaskEntity;
 import com.example.TaskDelete.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,12 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public HashMap<String,String> DeleteTask(TaskEntity t){
+    public ResponseDto DeleteTask(TaskDto t){
         repo.deleteTask(t.getId());
-        HashMap<String,String> map=new HashMap<>();
-        map.put("status","success");
-        return map;
+        ResponseDto response = new ResponseDto();
+        response.setStatus("success");
+//        HashMap<String,String> map=new HashMap<>();
+//        map.put("status","success");
+        return response;
     }
 }

@@ -9,12 +9,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity,Integer> {
 
     @Query(value = "SELECT * FROM `task` WHERE `status`= 0",nativeQuery = true)
     public List<TaskEntity> viewTask();
 
+//    @Query("SELECT t FROM task t WHERE t.status = 0")
+//    public List<TaskEntity> viewTask();
+
+//    @Modifying
+//    @Query("update task t set t.status = 1 where t.id = :id")
+//    void deleteTask(@Param("id") Integer id);
 
     @Modifying
     @Transactional
